@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import '../css/AddRoom.css'
 
 
 export default function AddRoom({setDataRoom}) {
@@ -35,7 +36,7 @@ export default function AddRoom({setDataRoom}) {
 
 
     return (
-        <div>
+        <div className="AddRoom">
             <select onChange={(e) => { setroomSelectInput(e.target.value) }} name="room">
                 <option value="">--Please choose an option--</option>
                 <option value="Bedroom">Bedroom</option>

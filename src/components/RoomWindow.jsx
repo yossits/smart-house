@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import '../css/RoomWindow.css'
 
 
 export default function RoomWindow({ setDataRoom, dataRoom, index }) {
@@ -79,7 +80,7 @@ export default function RoomWindow({ setDataRoom, dataRoom, index }) {
     }
 
     return (
-        <div>
+        <div className="RoomWindow">
             room name: {dataRoom[index].name}<br />
             room type: {dataRoom[index].select}<br />
             {showAddProduct()}

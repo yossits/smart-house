@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../css/AddProduct.css'
 
 export default function AddProduct({ TurnOnOff, productName, mode, flag, index }) {
 

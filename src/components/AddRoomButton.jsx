@@ -4,7 +4,7 @@ import '../css/AddRoomButton.css'
 
 export default function AddRoomButton() {
     return (
-        <div className="AddRoomButton-main">
+        <div className="AddRoomButton">
             <Link to='/addroom'><button>+</button></Link>
         </div>
     )

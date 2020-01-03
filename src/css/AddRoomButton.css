@@ -1,4 +1,4 @@
-.AddRoomButton-main{
-
+.AddRoomButton{
+    grid-area: AddRoomButton;
    
 }
