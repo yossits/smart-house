@@ -41,12 +41,6 @@ function App() {
       setDataRoom(temp)
     }
   }
-
-  // const RoomButton = () =>{
-  //   return <div className="MapRooms">
-  //     {}
-  //   </div>
-  // }
   
   return (
     <div className="App">
