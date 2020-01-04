@@ -36,7 +36,7 @@ const AddRoom =({ setDataRoom, history })=>{
         }
     }
 
-    const AlertDismissibleExample = () =>{
+    const AlertDismissible = () =>{
        
         if (show) {
           return (
@@ -54,7 +54,7 @@ const AddRoom =({ setDataRoom, history })=>{
     return (
         <div className="AddRoom">
 
-            {AlertDismissibleExample()}
+            {AlertDismissible()}
             <select onChange={(e) => { setroomSelectInput(e.target.value) }} name="room">
                 <option value="">--Please choose an option--</option>
                 <option value="Bedroom">Bedroom</option>

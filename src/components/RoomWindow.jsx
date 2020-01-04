@@ -1,12 +1,11 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../css/RoomWindow.css'
 
 
 export default function RoomWindow({ setDataRoom, dataRoom, index }) {
 
-    const [flag, setflag] = useState(false)
+    const [toggle, settoggle] = useState(false)
     const [Select, setSelect] = useState("")
 
     const products = dataRoom[index].products
@@ -36,33 +35,33 @@ export default function RoomWindow({ setDataRoom, dataRoom, index }) {
         if(Select === ''){
             console.log('you have to choose a product');
             alert('you have to choose a product');
-            setflag(false); 
+            settoggle(false); 
         }
         else if (Select === "stereo system" && CheckStereoSystemExsist()) {
             console.log('already have stereo system');
             alert('already have stereo system');
-            setflag(false); 
+            settoggle(false); 
         }
         else if (Select === 'Boiler' && dataRoom[index].select === 'Bathroom' && CheckBoilerExsist()) {
             console.log('already have Boiler in the Bathroom');
             alert('already have Boiler in the Bathroom');
-            setflag(false); 
+            settoggle(false); 
         }
         else if (products.length >= 5) {
             console.log('are possible maximum 5 products');
             alert('are possible maximum 5 products');
-            setflag(false); 
+            settoggle(false); 
         }
         else {
-            setDataRoom([...products, { name: Select, mode: "red", flag: false }])
+            setDataRoom([...products, { name: Select, mode: "red", toggle: false }])
             setSelect("")
-            setflag(false);
+            settoggle(false);
         }
     }
 
 
     const showAddProduct = () => {
-        if (flag) {
+        if (toggle) {
             return <div>
                 <select onChange={e => SetOption(e)} >
                     <option value="">--Please choose an option--</option>
@@ -75,7 +74,7 @@ export default function RoomWindow({ setDataRoom, dataRoom, index }) {
                 <Link to="/room"><button onClick={ProductStatusCheck} >add</button></Link>
             </div>
         } else {
-            return <button onClick={() => setflag(!flag)}>add product</button>
+            return <button onClick={() => settoggle(!toggle)}>add product</button>
         }
     }
 
