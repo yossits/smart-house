@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import '../css/AddRoom.css'
 import { CirclePicker } from 'react-color'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Alert from 'react-bootstrap/Alert';
 
 
-export default function AddRoom({ setDataRoom }) {
+
+const AddRoom =({ setDataRoom, history })=>{
 
     const [roomSelectInput, setroomSelectInput] = useState('')
     const [roomNameInput, setRoomNameInput] = useState('')
     const [background, setbackground] = useState('#fff')
+    const [show, setShow] = useState(false);
 
     const roomName = (e) => {
         if (e.target.value.length > 0) {
@@ -25,15 +29,32 @@ export default function AddRoom({ setDataRoom }) {
 
     const sendDateToApp = () => {
         if (roomSelectInput.length < 1 || roomNameInput.length < 1) {
-            alert('ERROR!');
+            setShow(true)
         } else {
-            setDataRoom(roomSelectInput, roomNameInput, background)
+            setDataRoom(roomSelectInput, roomNameInput, background) 
+            history.push('/');
         }
     }
+
+    const AlertDismissibleExample = () =>{
+       
+        if (show) {
+          return (
+            <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+              <Alert.Heading>You got an error!</Alert.Heading>
+              <p>
+                you have to choose room name and type
+              </p>
+            </Alert>
+          );
+        }
+    }
+      
 
     return (
         <div className="AddRoom">
 
+            {AlertDismissibleExample()}
             <select onChange={(e) => { setroomSelectInput(e.target.value) }} name="room">
                 <option value="">--Please choose an option--</option>
                 <option value="Bedroom">Bedroom</option>
@@ -55,8 +76,9 @@ export default function AddRoom({ setDataRoom }) {
                 <CirclePicker onChangeComplete={roomColor} />
             </div>
             <br />
-            <Link to='/'><button onClick={sendDateToApp}>create</button></Link>
+            <button onClick={sendDateToApp}>create</button>
 
         </div>
     )
 }
+export default withRouter(AddRoom);

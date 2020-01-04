@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
 import '../css/AddProduct.css'
 
-export default function AddProduct({ TurnOnOff, productName, mode, flag, index }) {
+const stateByColor = state => state ? 'green' : 'red';
 
-    return (
-        <div>
-            <Link to="/room"><button onClick={()=>TurnOnOff(!flag, index)} style={{ backgroundColor: mode }}>{productName}</button></Link>
-        </div>
-    )
+const AddProduct = ({ toggle, productName, state, index, history }) => {
+    const toggleRoom = () => { toggle(!state, index); history.push('/room') }
+ 
+    return <button onClick={toggleRoom} style={{ backgroundColor: stateByColor(state) }}>{productName}</button>
 }
-
+export default withRouter(AddProduct)

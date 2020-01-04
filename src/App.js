@@ -11,6 +11,17 @@ import AddProduct from './components/AddProduct';
 import Home from './components/Home';
 
 
+const ProductList = ({dataRoom,roomIndex,toggle }) => {
+  return <div className="AddProduct">
+    {dataRoom[roomIndex].products
+      .map((element, index) => <AddProduct
+        toggle={toggle}
+        productName={element.name}
+        state={element.state}
+        index={index}
+        key={'product-' + index} />)}
+  </div>
+}
 
 function App() {
 
@@ -26,22 +37,11 @@ function App() {
     temp = dataRoom;
     temp[roomIndex].products = list
     setDataRoom(temp)
-
-
   }
 
-  const TurnOnOff = (flag, index) => {
-    let temp = dataRoom
-    if (flag) {
-      temp[roomIndex].products[index].mode = 'green'
-      temp[roomIndex].products[index].flag = true
-      setDataRoom(temp)
-    }
-    else {
-      temp[roomIndex].products[index].mode = 'red'
-      temp[roomIndex].products[index].flag = false
-      setDataRoom(temp)
-    }
+  const toggle = (state, index) => {
+    dataRoom[roomIndex].products[index].state = state
+    setDataRoom(dataRoom)
   }
 
   return (
@@ -52,7 +52,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={() => { return <div className="RoomButton">{dataRoom.map((element, index) => <RoomButton setroomIndex={index => setroomIndex(index)} name={element.name} color={element.color} index={index} key={'room-' + index} />)}</div> }} />
           <Route exact path='/addroom' component={() => <AddRoom setDataRoom={comeFromAddRoom} />} />
-          <Route exact path='/room' component={() => { return <div className="AddProduct"> {dataRoom[roomIndex].products.map((element, index) => <AddProduct TurnOnOff={TurnOnOff} productName={element.name} mode={element.mode} flag={element.flag} index={index} key={'product-' + index} />)} </div> }} />
+          <Route exact path='/room' component={() => <ProductList dataRoom={dataRoom} roomIndex={roomIndex} toggle={toggle}/>} />
         </Switch>
         <Route exact path='/room' component={() => <RoomWindow setDataRoom={GetProducts} dataRoom={dataRoom} index={roomIndex} />} />
 
