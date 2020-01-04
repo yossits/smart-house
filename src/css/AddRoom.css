@@ -1,3 +1,9 @@
 .AddRoom{
     grid-area: section;
+    
+}
+
+.AddRoom-circle{
+    grid-area: AddRoomButton;
+    padding: 2vh;
 }

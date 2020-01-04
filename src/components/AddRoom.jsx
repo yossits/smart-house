@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../css/AddRoom.css'
+import { CirclePicker } from 'react-color'
 
 
-export default function AddRoom({setDataRoom}) {
+export default function AddRoom({ setDataRoom }) {
 
     const [roomSelectInput, setroomSelectInput] = useState('')
     const [roomNameInput, setRoomNameInput] = useState('')
-    const [roomColorInput, setRoomColorInput] = useState('white')    
+    const [background, setbackground] = useState('#fff')
 
     const roomName = (e) => {
         if (e.target.value.length > 0) {
@@ -19,24 +20,20 @@ export default function AddRoom({setDataRoom}) {
     }
 
     const roomColor = (e) => {
-        if (e.target.value.length > 0) {
-            setRoomColorInput(e.target.value)
-        } else {
-            setRoomColorInput('white')
-        }
+        setbackground(e.hex)
     }
 
     const sendDateToApp = () => {
         if (roomSelectInput.length < 1 || roomNameInput.length < 1) {
             alert('ERROR!');
         } else {
-            setDataRoom(roomSelectInput, roomNameInput, roomColorInput)
+            setDataRoom(roomSelectInput, roomNameInput, background)
         }
     }
 
-
     return (
         <div className="AddRoom">
+
             <select onChange={(e) => { setroomSelectInput(e.target.value) }} name="room">
                 <option value="">--Please choose an option--</option>
                 <option value="Bedroom">Bedroom</option>
@@ -54,13 +51,12 @@ export default function AddRoom({setDataRoom}) {
                 type="text"
             />
             <br />
-            <input
-                onChange={roomColor}
-                placeholder=" room color..."
-                type="text"
-            />
+            <div className="AddRoom-circle">
+                <CirclePicker onChangeComplete={roomColor} />
+            </div>
             <br />
             <Link to='/'><button onClick={sendDateToApp}>create</button></Link>
+
         </div>
     )
 }
