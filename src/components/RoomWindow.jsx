@@ -1,25 +1,25 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import '../css/RoomWindow.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Alert from 'react-bootstrap/Alert';
+import DropdownButton  from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
 
-
-export default function RoomWindow({ setDataRoom, dataRoom, index }) {
+const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
 
     const [toggle, settoggle] = useState(false)
-    const [Select, setSelect] = useState("")
+    const [Select, setSelect] = useState("--Please choose an option--")
+    const [show, setShow] = useState(false);
 
     const products = dataRoom[index].products
-
-    const SetOption = (e) => {
-        setSelect(e.target.value)
-    }
 
     const CheckStereoSystemExsist = () => {
         for (let i = 0; i < products.length; i++) {
             if (products[i].name === 'stereo system') {
                 return true
             }
-        }return false
+        } return false
     }
 
     const CheckBoilerExsist = () => {
@@ -27,35 +27,36 @@ export default function RoomWindow({ setDataRoom, dataRoom, index }) {
             if (products[i].name === 'Boiler') {
                 return true
             }
-        }return false
+        } return false
     }
 
     const ProductStatusCheck = () => {
 
-        if(Select === ''){
+        if (Select === '') {
             console.log('you have to choose a product');
-            alert('you have to choose a product');
-            settoggle(false); 
+            setShow(true);
+            settoggle(false);
         }
         else if (Select === "stereo system" && CheckStereoSystemExsist()) {
             console.log('already have stereo system');
-            alert('already have stereo system');
-            settoggle(false); 
+            setShow(true);
+            settoggle(false);
         }
         else if (Select === 'Boiler' && dataRoom[index].select === 'Bathroom' && CheckBoilerExsist()) {
             console.log('already have Boiler in the Bathroom');
-            alert('already have Boiler in the Bathroom');
-            settoggle(false); 
+            setShow(true);
+            settoggle(false);
         }
         else if (products.length >= 5) {
             console.log('are possible maximum 5 products');
-            alert('are possible maximum 5 products');
-            settoggle(false); 
+            setShow(true);
+            settoggle(false);
         }
         else {
             setDataRoom([...products, { name: Select, mode: "red", toggle: false }])
-            setSelect("")
+            setSelect("--Please choose an option--")
             settoggle(false);
+            history.push('/room');
         }
     }
 
@@ -63,18 +64,34 @@ export default function RoomWindow({ setDataRoom, dataRoom, index }) {
     const showAddProduct = () => {
         if (toggle) {
             return <div>
-                <select onChange={e => SetOption(e)} >
-                    <option value="">--Please choose an option--</option>
-                    <option value="Air-Conditioner">Air-Conditioner</option>
-                    <option value="Boiler">Boiler</option>
-                    <option value="stereo system">stereo system</option>
-                    <option value="light">light</option>
-                </select>
+                <DropdownButton id="dropdown-basic-button" title={Select}>
+                    <Dropdown.Item onClick={() => setSelect("Air-Conditioner")} >Air-Conditioner</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setSelect("Boiler")} >Boiler</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setSelect("stereo system")} >stereo system</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setSelect("light")} >light</Dropdown.Item>
+                </DropdownButton>
                 <br />
-                <Link to="/room"><button onClick={ProductStatusCheck} >add</button></Link>
+                <button onClick={ProductStatusCheck} >add</button>
             </div>
         } else {
             return <button onClick={() => settoggle(!toggle)}>add product</button>
+        }
+    }
+
+    const AlertDismissible = () => {
+
+        if (show) {
+            return (
+                <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+                    <Alert.Heading>You got an error!</Alert.Heading>
+                    <p>
+                        you have to choose a product<br />
+                        already have stereo system<br />
+                        already have Boiler in the Bathroom<br />
+                        are possible maximum 5 products
+              </p>
+                </Alert>
+            );
         }
     }
 
@@ -83,7 +100,8 @@ export default function RoomWindow({ setDataRoom, dataRoom, index }) {
             room name: {dataRoom[index].name}<br />
             room type: {dataRoom[index].select}<br />
             {showAddProduct()}
+            {AlertDismissible()}
         </div>
     )
 }
-
+export default withRouter(RoomWindow);

@@ -4,12 +4,13 @@ import '../css/AddRoom.css'
 import { CirclePicker } from 'react-color'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Alert from 'react-bootstrap/Alert';
-
+import DropdownButton  from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
 
 
 const AddRoom =({ setDataRoom, history })=>{
 
-    const [roomSelectInput, setroomSelectInput] = useState('')
+    const [roomSelectInput, setroomSelectInput] = useState('--Please choose an option--')
     const [roomNameInput, setRoomNameInput] = useState('')
     const [background, setbackground] = useState('#fff')
     const [show, setShow] = useState(false);
@@ -53,17 +54,13 @@ const AddRoom =({ setDataRoom, history })=>{
 
     return (
         <div className="AddRoom">
-
             {AlertDismissible()}
-            <select onChange={(e) => { setroomSelectInput(e.target.value) }} name="room">
-                <option value="">--Please choose an option--</option>
-                <option value="Bedroom">Bedroom</option>
-                <option value="kitchen">kitchen</option>
-                <optgroup label="Bathroom/toilet">
-                    <option value="toilet">toilet</option>
-                    <option value="Bathroom">Bathroom</option>
-                </optgroup>
-            </select>
+                <DropdownButton id="dropdown-basic-button" title={roomSelectInput}>
+                    <Dropdown.Item onClick={() => setroomSelectInput("Bedroom")} >Bedroom</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setroomSelectInput("kitchen")} >kitchen</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setroomSelectInput("toilet")} >toilet</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setroomSelectInput("Bathroom")} >Bathroom</Dropdown.Item>
+                </DropdownButton>
             <br />
             <input
                 onChange={roomName}
