@@ -1,11 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import '../css/AddRoomButton.css'
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
-export default function AddRoomButton() {
+const AddRoomButton = ({history}) => {
     return (
         <div className="AddRoomButton">
-            <Link to='/addroom'><button>+</button></Link>
+            <Fab onClick={()=>{history.push('/addroom')}} color="primary" aria-label="add">
+                <AddIcon />
+            </Fab>
         </div>
     )
 }
+export default withRouter(AddRoomButton)

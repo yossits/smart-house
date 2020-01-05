@@ -50,7 +50,7 @@ function App() {
       <Router>
         <Route path='/' component={() => <Home />} />
         <Switch>
-          <Route exact path='/' component={() => { return <div className="RoomButton">{dataRoom.map((element, index) => <RoomButton setroomIndex={index => setroomIndex(index)} name={element.name} color={element.color} index={index} key={'room-' + index} />)}</div> }} />
+          <Route exact path='/' component={() => { return <div className="RoomButton">{dataRoom.map((element, index) => <RoomButton quantity={element.products.length} setroomIndex={index => setroomIndex(index)} name={element.name} color={element.color} index={index} key={'room-' + index} />)}</div> }} />
           <Route exact path='/addroom' component={() => <AddRoom setDataRoom={comeFromAddRoom} />} />
           <Route exact path='/room' component={() => <ProductList dataRoom={dataRoom} roomIndex={roomIndex} toggle={toggle}/>} />
         </Switch>

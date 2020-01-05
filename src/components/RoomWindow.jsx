@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Alert from 'react-bootstrap/Alert';
 import DropdownButton  from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
+import Button from '@material-ui/core/Button';
 
 const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
 
@@ -32,7 +33,7 @@ const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
 
     const ProductStatusCheck = () => {
 
-        if (Select === '') {
+        if (Select === '--Please choose an option--') {
             console.log('you have to choose a product');
             setShow(true);
             settoggle(false);
@@ -70,11 +71,12 @@ const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
                     <Dropdown.Item onClick={() => setSelect("stereo system")} >stereo system</Dropdown.Item>
                     <Dropdown.Item onClick={() => setSelect("light")} >light</Dropdown.Item>
                 </DropdownButton>
-                <br />
-                <button onClick={ProductStatusCheck} >add</button>
+
+                <Button onClick={ProductStatusCheck} variant="contained" color="primary">add</Button>
             </div>
         } else {
-            return <button onClick={() => settoggle(!toggle)}>add product</button>
+            return <Button onClick={() => settoggle(!toggle)} variant="contained">add product</Button>
+            
         }
     }
 
@@ -94,7 +96,6 @@ const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
             );
         }
     }
-
     return (
         <div className="RoomWindow">
             room name: {dataRoom[index].name}<br />
