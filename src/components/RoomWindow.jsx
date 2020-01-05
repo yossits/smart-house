@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
 
     const [toggle, settoggle] = useState(false)
-    const [Select, setSelect] = useState("--Please choose an option--")
+    const [Select, setSelect] = useState("-- choose --")
     const [show, setShow] = useState(false);
 
     const products = dataRoom[index].products
@@ -33,7 +33,7 @@ const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
 
     const ProductStatusCheck = () => {
 
-        if (Select === '--Please choose an option--') {
+        if (Select === '-- choose --') {
             console.log('you have to choose a product');
             setShow(true);
             settoggle(false);
@@ -55,7 +55,7 @@ const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
         }
         else {
             setDataRoom([...products, { name: Select, mode: "red", toggle: false }])
-            setSelect("--Please choose an option--")
+            setSelect("-- choose --")
             settoggle(false);
             history.push('/room');
         }
@@ -64,7 +64,7 @@ const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
 
     const showAddProduct = () => {
         if (toggle) {
-            return <div>
+            return <div className="RoomWindow-Dropdown">
                 <DropdownButton id="dropdown-basic-button" title={Select}>
                     <Dropdown.Item onClick={() => setSelect("Air-Conditioner")} >Air-Conditioner</Dropdown.Item>
                     <Dropdown.Item onClick={() => setSelect("Boiler")} >Boiler</Dropdown.Item>
@@ -75,7 +75,9 @@ const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
                 <Button onClick={ProductStatusCheck} variant="contained" color="primary">add</Button>
             </div>
         } else {
-            return <Button onClick={() => settoggle(!toggle)} variant="contained">add product</Button>
+            return <div>
+                    <Button onClick={() => settoggle(!toggle)} variant="contained">add product</Button>
+                </div>
             
         }
     }
@@ -84,24 +86,33 @@ const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
 
         if (show) {
             return (
-                <Alert variant="danger" onClose={() => setShow(false)} dismissible>
-                    <Alert.Heading>You got an error!</Alert.Heading>
-                    <p>
-                        you have to choose a product<br />
-                        already have stereo system<br />
-                        already have Boiler in the Bathroom<br />
-                        are possible maximum 5 products
-              </p>
-                </Alert>
+                <div className="RoomWindow-alert">
+                    <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+                        <Alert.Heading>You got an error!</Alert.Heading>
+                            <p>
+                                you have to choose a product<br />
+                                already have stereo system<br />
+                                already have Boiler in the Bathroom<br />
+                                are possible maximum 5 products
+                            </p>
+                    </Alert>
+                </div>
+
             );
         }
     }
     return (
         <div className="RoomWindow">
-            room name: {dataRoom[index].name}<br />
-            room type: {dataRoom[index].select}<br />
-            {showAddProduct()}
             {AlertDismissible()}
+            <div>
+                name: {dataRoom[index].name}<br />
+                type: {dataRoom[index].select}<br />
+            </div>
+            <div>
+                {showAddProduct()}
+            </div>
+            
+            
         </div>
     )
 }

@@ -9,7 +9,7 @@ import { DropdownButton, Dropdown,ButtonToolbar ,Button, InputGroup, FormControl
 
 const AddRoom = ({ setDataRoom, history }) => {
 
-    const [roomSelectInput, setroomSelectInput] = useState('--Please choose an option--')
+    const [roomSelectInput, setroomSelectInput] = useState('-- choose --')
     const [roomNameInput, setRoomNameInput] = useState('')
     const [background, setbackground] = useState('#fff')
     const [show, setShow] = useState(false);
@@ -28,7 +28,7 @@ const AddRoom = ({ setDataRoom, history }) => {
     }
 
     const sendDateToApp = () => {
-        if (roomSelectInput === '--Please choose an option--' || roomNameInput.length < 1) {
+        if (roomSelectInput === '-- choose --' || roomNameInput.length < 1) {
             setShow(true)
         } else {
             setDataRoom(roomSelectInput, roomNameInput, background)
@@ -73,7 +73,7 @@ const AddRoom = ({ setDataRoom, history }) => {
                 />
             </InputGroup>
 
-            <div className="AddRoom-circle">
+            <div>
                 <CirclePicker onChangeComplete={roomColor} />
             </div>
 

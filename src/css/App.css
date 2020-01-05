@@ -1,16 +1,16 @@
 .App {
   display: grid;
 
-  grid-template-columns: 40% 60% 20%;
-  grid-template-rows: 20vh 60vh 20vh;
+  
+  grid-template-columns: 20vh 40vh 20vh ;
+  grid-template-rows: 10vh 10vh 10vh 10vh 10vh 10vh  10vh  10vh;
   text-align: -webkit-center;
   align-items: center;
   grid-template-areas:
-  "Home Title ."
-  "RoomWindow section ."
-  ". AddRoomButton .";
+  "Home Title "
+  "left section "
+  "AddRoomButton AddRoomButton ";
   grid-gap: 10px;
-
 }
 
 .MapRooms{

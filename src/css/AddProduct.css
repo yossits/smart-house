@@ -1,3 +1,4 @@
 .AddProduct{
-    grid-area: section;
+    grid-column: 2 / 4;
+    grid-row: 6 / 7;
 }

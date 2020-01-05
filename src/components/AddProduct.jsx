@@ -64,7 +64,7 @@ const IOSSwitch = withStyles(theme => ({
 const AddProduct = ({ toggle, productName, state, index, history }) => {
     const toggleRoom = () => { toggle(!state, index); history.push('/room') }
 
-    return <div>
+    return <div className="AddProduct">
         <FormGroup>
             <FormControlLabel
                 style={{ color: stateByColor(state) }}

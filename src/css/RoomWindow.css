@@ -1,3 +1,17 @@
 .RoomWindow{
-    grid-area: RoomWindow;
+    grid-column: 1 / 2;
+    grid-row: 3 / 5;
+}
+
+.RoomWindow-name{
+    grid-column: 2 / 3;
+    grid-row: 4 / 7;
+}
+.RoomWindow-Dropdown{
+    grid-column: 2 / 3;
+    grid-row: 4 / 7;
+}
+.RoomWindow-alert{
+    grid-column: 2 / 3;
+    grid-row: 4 / 7;
 }

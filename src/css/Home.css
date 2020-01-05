@@ -1,3 +1,5 @@
 .Home {
-    grid-area: Home;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+
 }
