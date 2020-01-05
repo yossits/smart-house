@@ -1,5 +1,6 @@
 .Title {
-    grid-area: Title;
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
     text-align: left;
     margin-left: 5vh;
   }
