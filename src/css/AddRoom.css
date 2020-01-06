@@ -1,5 +1,17 @@
 .AddRoom{
-    grid-column: 2 / 3;
-    grid-row: 4 / 7;
+    grid-column: 1 / 3;
+    grid-row: 3 / 7;
+    align-items: center;
+    display: inline;
 }
 
+.AddRoom-ButtonToolbar{
+    align-items: center;
+    padding: 12px;
+    width: 90px;
+}
+
+.AddRoom-input{
+    width: 200px;
+    padding: 18px;
+}

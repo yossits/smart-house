@@ -25,7 +25,7 @@ function HomeIcon(props) {
 
 const Home = ({ history }) => {
     const classes = useStyles();
-    return ( <div>
+    return ( <div className="Home">
         <Button onClick={() => history.push('/')} className={classes.root} variant="contained">
             <HomeIcon fontSize="large" />
         </Button>

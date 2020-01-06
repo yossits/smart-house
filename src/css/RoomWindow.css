@@ -12,6 +12,15 @@
     grid-row: 4 / 7;
 }
 .RoomWindow-alert{
-    grid-column: 2 / 3;
-    grid-row: 4 / 7;
+    grid-column: 1 / 4;
+    grid-row: 6 / 7;
+    width: 370px;
+    padding: 20px;
+}
+
+.RoomWindow-add{
+    padding: 10px;
+}
+.RoomWindow-Dropdown-item{
+    padding: 10px;
 }

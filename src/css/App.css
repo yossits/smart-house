@@ -2,8 +2,8 @@
   display: grid;
 
   
-  grid-template-columns: 20vh 40vh 20vh ;
-  grid-template-rows: 10vh 10vh 10vh 10vh 10vh 10vh  10vh  10vh;
+  grid-template-columns: 20vh 30vh 20vh ;
+  grid-template-rows: 10vh 10vh 10vh 10vh 10vh 10vh  10vh ;
   text-align: -webkit-center;
   align-items: center;
   grid-template-areas:

@@ -65,14 +65,19 @@ const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
     const showAddProduct = () => {
         if (toggle) {
             return <div className="RoomWindow-Dropdown">
-                <DropdownButton id="dropdown-basic-button" title={Select}>
-                    <Dropdown.Item onClick={() => setSelect("Air-Conditioner")} >Air-Conditioner</Dropdown.Item>
-                    <Dropdown.Item onClick={() => setSelect("Boiler")} >Boiler</Dropdown.Item>
-                    <Dropdown.Item onClick={() => setSelect("stereo system")} >stereo system</Dropdown.Item>
-                    <Dropdown.Item onClick={() => setSelect("light")} >light</Dropdown.Item>
-                </DropdownButton>
+                <div className="RoomWindow-Dropdown-item">
+                    <DropdownButton id="dropdown-basic-button" title={Select}>
+                        <Dropdown.Item onClick={() => setSelect("Air-Conditioner")} >Air-Conditioner</Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelect("Boiler")} >Boiler</Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelect("stereo system")} >stereo system</Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelect("light")} >light</Dropdown.Item>
+                    </DropdownButton>
+                </div>
 
-                <Button onClick={ProductStatusCheck} variant="contained" color="primary">add</Button>
+                <div className="RoomWindow-add">
+                    <Button onClick={ProductStatusCheck} variant="contained" color="primary">add</Button>
+                </div>
+                
             </div>
         } else {
             return <div>
@@ -86,7 +91,7 @@ const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
 
         if (show) {
             return (
-                <div className="RoomWindow-alert">
+                <div>
                     <Alert variant="danger" onClose={() => setShow(false)} dismissible>
                         <Alert.Heading>You got an error!</Alert.Heading>
                             <p>
@@ -103,7 +108,10 @@ const RoomWindow = ({ setDataRoom, dataRoom, index, history }) => {
     }
     return (
         <div className="RoomWindow">
-            {AlertDismissible()}
+            <div className="RoomWindow-alert">
+                {AlertDismissible()}
+            </div>
+            
             <div>
                 name: {dataRoom[index].name}<br />
                 type: {dataRoom[index].select}<br />

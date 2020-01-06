@@ -43,7 +43,7 @@ const AddRoom = ({ setDataRoom, history }) => {
                 <Alert variant="danger" onClose={() => setShow(false)} dismissible>
                     <Alert.Heading>You got an error!</Alert.Heading>
                     <p>
-                        you have to choose room name and type
+                        you
                     </p>
                 </Alert>
             );
@@ -53,34 +53,37 @@ const AddRoom = ({ setDataRoom, history }) => {
 
     return (
         <div className="AddRoom">
-            {AlertDismissible()}
+            <div className="AddRoom-alert">
+                {AlertDismissible()}
+            </div>
+            
             <DropdownButton id="dropdown-basic-button" title={roomSelectInput}>
                 <Dropdown.Item onClick={() => setroomSelectInput("Bedroom")} >Bedroom</Dropdown.Item>
                 <Dropdown.Item onClick={() => setroomSelectInput("kitchen")} >kitchen</Dropdown.Item>
                 <Dropdown.Item onClick={() => setroomSelectInput("toilet")} >toilet</Dropdown.Item>
                 <Dropdown.Item onClick={() => setroomSelectInput("Bathroom")} >Bathroom</Dropdown.Item>
             </DropdownButton>
-
-            <InputGroup className="mb-3">
-                <InputGroup.Prepend>
-                    <InputGroup.Text id="inputGroup-sizing-default">room name</InputGroup.Text>
-                </InputGroup.Prepend>
-                <FormControl
-                    onChange={roomName}
-                    maxLength="5"
-                    aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default"
-                />
-            </InputGroup>
-
+            <div className="AddRoom-input">
+                <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text id="inputGroup-sizing-default">room name</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl
+                        onChange={roomName}
+                        maxLength="5"
+                        aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default"
+                    />
+                </InputGroup>
+            </div>
             <div>
                 <CirclePicker onChangeComplete={roomColor} />
             </div>
-
-            <ButtonToolbar>
-                <Button onClick={sendDateToApp} variant="outline-success">Create</Button>
-            </ButtonToolbar>
-
+            <div className="AddRoom-ButtonToolbar">
+                <ButtonToolbar>
+                    <Button onClick={sendDateToApp} variant="outline-success">Create</Button>
+                </ButtonToolbar>
+            </div>
         </div>
     )
 }
