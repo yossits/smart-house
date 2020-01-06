@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/smart-house/static/css/main.fbca215c.chunk.css",
-    "main.js": "/smart-house/static/js/main.c28d0379.chunk.js",
-    "main.js.map": "/smart-house/static/js/main.c28d0379.chunk.js.map",
+    "main.css": "/smart-house/static/css/main.09e44eeb.chunk.css",
+    "main.js": "/smart-house/static/js/main.b53ee130.chunk.js",
+    "main.js.map": "/smart-house/static/js/main.b53ee130.chunk.js.map",
     "runtime-main.js": "/smart-house/static/js/runtime-main.cd7a8791.js",
     "runtime-main.js.map": "/smart-house/static/js/runtime-main.cd7a8791.js.map",
     "static/css/2.17e5ed98.chunk.css": "/smart-house/static/css/2.17e5ed98.chunk.css",
     "static/js/2.3b246f30.chunk.js": "/smart-house/static/js/2.3b246f30.chunk.js",
     "static/js/2.3b246f30.chunk.js.map": "/smart-house/static/js/2.3b246f30.chunk.js.map",
     "index.html": "/smart-house/index.html",
-    "precache-manifest.c2f948b2d29d5ae545d481bce317ecc3.js": "/smart-house/precache-manifest.c2f948b2d29d5ae545d481bce317ecc3.js",
+    "precache-manifest.c690e09a12a551e94caf43e66fb588d6.js": "/smart-house/precache-manifest.c690e09a12a551e94caf43e66fb588d6.js",
     "service-worker.js": "/smart-house/service-worker.js",
     "static/css/2.17e5ed98.chunk.css.map": "/smart-house/static/css/2.17e5ed98.chunk.css.map",
-    "static/css/main.fbca215c.chunk.css.map": "/smart-house/static/css/main.fbca215c.chunk.css.map",
+    "static/css/main.09e44eeb.chunk.css.map": "/smart-house/static/css/main.09e44eeb.chunk.css.map",
     "static/js/2.3b246f30.chunk.js.LICENSE": "/smart-house/static/js/2.3b246f30.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.cd7a8791.js",
     "static/css/2.17e5ed98.chunk.css",
     "static/js/2.3b246f30.chunk.js",
-    "static/css/main.fbca215c.chunk.css",
-    "static/js/main.c28d0379.chunk.js"
+    "static/css/main.09e44eeb.chunk.css",
+    "static/js/main.b53ee130.chunk.js"
   ]
 }
